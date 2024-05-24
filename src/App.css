@@ -1,0 +1,79 @@
+/* App.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  color: green;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.matrix-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.App-header {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  text-shadow: 1px 1px 2px #0f0, -1px -1px 2px #0f0, 1px -1px 2px #0f0, -1px 1px 2px #0f0;
+}
+
+.App-header h1, .App-header p {
+  color: black;
+  text-shadow: 1px 1px 2px #0f0, -1px -1px 2px #0f0, 1px -1px 2px #0f0, -1px 1px 2px #0f0;
+}
+
+.input-container {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-interval {
+  background: transparent;
+  border: none;
+  color: green;
+  font-size: calc(35px + 2vmin);
+  font-weight: bold;
+  text-align: center;
+  width: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+  -moz-appearance: textfield;
+}
+
+.input-interval::-webkit-outer-spin-button,
+.input-interval::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-interval:focus {
+  outline: none;
+}
+
