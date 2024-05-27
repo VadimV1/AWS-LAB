@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 
 # Install dependencies (Node.js dependencies)
 COPY package*.json ./
-RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object --legacy-peer-deps
+RUN npm install
 # Copy the rest of the application code
 COPY . .
 # Expose the port the app runs on
@@ -18,6 +18,9 @@ EXPOSE 3000
 # Build the React app for production
 RUN npm run build
 
+# Install serve to serve the build
+RUN npm install -g serve
+
 # Start the application
-CMD ["npm","start"]
+CMD ["serve","-s","build"]
 
