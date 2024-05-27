@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 const MatrixEffect = () => {
@@ -72,7 +73,6 @@ function App() {
 
     fetchData();
     const intervalId = setInterval(fetchData, intervalSec * 1000);
-
     return () => clearInterval(intervalId);
   }, [intervalSec]);
 
@@ -84,35 +84,42 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <MatrixEffect />
-      <header className="App-header">
-        {error ? (
-          <p>Error: {error}</p>
-        ) : data ? (
-          <div>
-            <h1>
-              Hello Labcom
-              <input
-                type="number"
-                value={intervalSec}
-                onChange={handleIntervalChange}
-                className="input-interval"
-                min="1"
-              />
-            </h1>
-            <p>Selected query:</p>
-            <p>ID: {data.id}</p>
-            <p>Value: {data.value}</p>
-            <p>Description: {data.description}</p>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </header>
-    </div>
+    <BrowserRouter basename="/Labcom-task">
+      <div className="App">
+        <Routes>
+          <Route path="/" element={
+            <>
+              <MatrixEffect />
+              <header className="App-header">
+                {error ? (
+                  <p>Error: {error}</p>
+                ) : data ? (
+                  <div>
+                    <h1>
+                      Hello Labcom
+                      <input
+                        type="number"
+                        value={intervalSec}
+                        onChange={handleIntervalChange}
+                        className="input-interval"
+                        min="1"
+                      />
+                    </h1>
+                    <p>Selected query:</p>
+                    <p>ID: {data.id}</p>
+                    <p>Value: {data.value}</p>
+                    <p>Description: {data.description}</p>
+                  </div>
+                ) : (
+                  <p>Loading...</p>
+                )}
+              </header>
+            </>
+          } />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
