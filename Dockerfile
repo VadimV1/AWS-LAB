@@ -1,6 +1,9 @@
 # Use the official Node.js Alpine image
 FROM node:14-alpine
 
+#Install curl for health checks
+RUN apk add curl
+
 # Set the working directory
 WORKDIR /usr/src/app
 
