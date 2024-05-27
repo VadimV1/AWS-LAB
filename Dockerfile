@@ -12,16 +12,16 @@ COPY package*.json ./
 RUN npm install
 # Copy the rest of the application code
 COPY . .
-
-# Install serve to serve the build
-RUN npm install -g serve
+# Expose the port the app runs on
+EXPOSE 3000
 
 # Build the React app for production
 RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Install serve to serve the build
+RUN npm install -g serve
+
 
 # Start the application
-CMD ["npm","start"]
+CMD ["serve","-s","build"]
 
