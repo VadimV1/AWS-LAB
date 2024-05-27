@@ -11,6 +11,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 RUN npm install -g serve
+RUN npm install react-router-dom
 # Copy the rest of the application code
 COPY . .
 # Expose the port the app runs on
