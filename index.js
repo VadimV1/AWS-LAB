@@ -8,7 +8,20 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT;
 // Configure CORS
-app.use(cors()); // Enabling CORS for the specified origins
+const allowedOrigins = ['https://13337labs.com', 'https://13337labs.com/Labcom-task'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions)); // Enabling CORS for the specified origins
+
 app.use(express.json());
 
 setupDatabase()
