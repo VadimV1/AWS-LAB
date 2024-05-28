@@ -3,7 +3,7 @@ This aim of this project is to provision a complete AWS infrastructure with a RD
 ___________________________
 This branch contains the node react for creating the frontend service app files and the Dockerfile for creating the dockerizd image for the project.
 
-The frontend app connect to the backend service and sends a get request every X seconds, the time interval can be configured by clicking the number on 'Welcome Labcom *number*' and changing the seconds interval.
+The frontend app connect to the backend service and sends a get request every X seconds to pull a DB query, the time interval can be configured by clicking the number on 'Welcome Labcom *number*' and changing the seconds interval.
 
 There is one .env file that contains the address of the backend service.
 
