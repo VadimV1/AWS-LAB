@@ -55,3 +55,10 @@ Creation of the RDS is pretty straight forward, specify the login credentials an
 ***Note that the process is documented in the **db.tf** file of the terraform config**
 
 # Step 4 - Creation of ECS instance
+## Creation on the ECS cluster with fargate 
+
+* Note that I have created a process that clones the lastest version of the frotend and backend from github, then creates docker images from them and pushes them into ECR for later uss to configure the ECS cluster.
+
+  1. Firstly configure the ECS cluster component
+  2. Create two Tasks, one for the backend and one for the frontend service with the appropriate container definitions, note that it is important to inculde the healthcheck ability of the container, eanbling logs is optional but recommended.
+  3. Create two services, one for the frontend task and one for the backend task, in which you ought to configure the ALB target groups to the services and to attach the relevant security groups.
