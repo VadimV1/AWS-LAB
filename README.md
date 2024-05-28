@@ -19,8 +19,8 @@ NAT gateway - THe private subnets will connect to it and be able to sent request
 
 This step consists of configuring a few conponents:
 
-1. IGW
-2. ALB
+1. ALB
+2. IGW 
 3. NAT gateway
 4. NAT elastic ip
 5. 2 public subnets
@@ -29,6 +29,23 @@ This step consists of configuring a few conponents:
 8. Route table for the private subnets
 9. Relevant associations of the routing tables to the subnets
 
-***Note that the process is documented in the **main.tf** file of the terraform config**
+The more straightforward configurtion of components 2-9 is in the **main.tf**
 
+### ALB configuration
+After configuring **step 1** we will create the ALB component and create the following componets as well:
 
+1. ALB Target gorups - A component that is used to route requests to one or more registered targets, such as EC2,ECS instances, based on specific rules and conditions. 
+
+2. ALB listeners - Checks for incoming connection requests from clients using the specified protocol and port
+
+During the configuration of the ALB listeners to attach the SSL certs we need to configure it with an SSL policy and them give it the relevant SSL cert of the created domain from **step 1**.
+
+* Note create a redicrection from port 80 to port 443 in the ALB listeners
+
+Creation of the target and their port will be able to redirect trafic to our ECS instances that we will create later.
+
+After configuring the ALB we will add its DNS name into an A record in Route53 records so we will be able to acces our vpc with SSL certs and by typing our domain name in the browsers.
+
+***Note that the process is documented in the *main.tf*, *alb.tf*,*acm.tf* file of the terraform config**
+
+# Step 3 - Creation of the DB
