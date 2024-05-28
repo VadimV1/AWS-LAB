@@ -49,3 +49,9 @@ After configuring the ALB we will add its DNS name into an A record in Route53 r
 ***Note that the process is documented in the *main.tf*, *alb.tf*,*acm.tf* file of the terraform config**
 
 # Step 3 - Creation of the DB
+
+Creation of the RDS is pretty straight forward, specify the login credentials and the type of instance you want.
+
+***Note that the process is documented in the **db.tf** file of the terraform config**
+
+# Step 4 - Creation of ECS instance
