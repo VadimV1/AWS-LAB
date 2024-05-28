@@ -4,6 +4,7 @@ ___________________________
 This branch contains the node express app files and the Dockerfile for creating the dockerizd image for the project.
 
 The backend app connects to the db and pulls queries from it.
+Also using CORS to filterout get requests only from the frontend service.
 
 There are 6 env vars you need to configure when you provision this service:
 
