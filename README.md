@@ -3,6 +3,8 @@ This aim of this project is to provision a complete AWS infrastructure with a RD
 ___________________________
 This branch contains the node express app files and the Dockerfile for creating the dockerizd image for the project.
 
+The backend app connects to the db and pulls queries from it.
+
 There are 6 env vars you need to configure when you provision this service:
 
 1. DB_HOST - The DB host adress
