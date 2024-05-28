@@ -61,4 +61,22 @@ Creation of the RDS is pretty straight forward, specify the login credentials an
 
   1. Firstly configure the ECS cluster component
   2. Create two Tasks, one for the backend and one for the frontend service with the appropriate container definitions, note that it is important to inculde the healthcheck ability of the container, eanbling logs is optional but recommended.
-  3. Create two services, one for the frontend task and one for the backend task, in which you ought to configure the ALB target groups to the services and to attach the relevant security groups.
+  3. Create two services, one for the frontend task and one for the backend task, in which you ought to configure the ALB target groups to the services and to attach the relevant security groups and the subnets they will run on.
+  4. Next configure the ALB listener for the backend service to block all communication exept the frontend.
+  5. configure security groups for the DB and for the ALB so the ECS components can "talk" to them.
+ 
+  * Note configuring the ALB healthcheck path and the container healthcheck is important because if they both wont be able to pull the liveness of the container, the ECS agent after some time will destory the container and will redeploy it in an endless cycle, because it thinks that container cant start, even though the microservice inisde runs fine. The problem with the cluster reprovisioning the ECS service in endless cycle is bad beacuse it pull image from the ECR each time, and that costs money money per pull :( also it impacts the CI/CD pipeline by wating for timeout of te deployment because the contaier cant reach ready state.
+ 
+***Note that the process is documented in the *ecs.tf*, *alb.tf*,*ecs.tf*,securitygroup.tf file of the terraform config**
+  
+# Step 5 - Creation of CI/CD pipeline with CodePipeLine
+## Creation on CodePipeLine with CodeBuild project and github webhook and redeployment on the appropriate services
+
+This step requires creation of the following components for each pipeline:
+1. CodePipeLine
+2. Codebuild 
+3. AWS webhook
+4. Github webhook url register
+5. S3 bucket
+
+For each pipeline you would configure the general skeleton of the CodePipeLine, next you would want to configure the github webhook with the two components(3,4) to the relevant branch. After that you will create a Codebuild project that will get the github clone resources, create an artifact from in and dockerize then push it into ECR with each github push trigger. Then lastly the image will be redeployed on the appropriate container/service on the ECS cluster (note that which image and which container is specified in the imagedefinitions.json).
