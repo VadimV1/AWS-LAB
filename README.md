@@ -5,7 +5,7 @@ ______________________________
 ## Creation of the Domain and SSL certs.
 
 The first and mostly manual step will be to create a domain name with aws **Route53**.
-After the creation of the new domain name, AWS will provide a hosted zone for the domain, after which you will need to create a new SSL certificate with ACM you would need to register the new ACM into the domains Route53 records and validate it.
+After the creation of the new domain name, AWS will provide a hosted zone for the domain, after which you will need to create a new SSL certificate with ACM, next would need to register the new ACM into the domains Route53 records and validate it.
 
 ***Note that the process is documented in the **acm.tf** file of the terraform config**
 
