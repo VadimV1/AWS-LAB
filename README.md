@@ -39,7 +39,7 @@ After configuring **step 1** we will create the ALB component and create the fol
 
 2. ALB listeners - Checks for incoming connection requests from clients using the specified protocol and port
 
-During the configuration of the ALB listeners to attach the SSL certs we need to configure it with an SSL policy and them give it the relevant SSL cert of the created domain from **step 1**.
+During the configuration of the ALB listeners, to attach the SSL certs we need to configure it with an SSL policy and them give it the relevant SSL cert of the created domain from **step 1**.
 
 * Note create a redicrection from port 80 to port 443 in the ALB listeners
 
