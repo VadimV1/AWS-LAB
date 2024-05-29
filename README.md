@@ -51,9 +51,9 @@ After configuring the ALB we will add its DNS name into an A record in Route53 r
 
 # Step 3 - Creation of the DB
 
-Creation of the RDS is pretty straight forward, specify the login credentials and the type of instance you want.
+Creation of the RDS is pretty straight forward, specify the login credentials and the type of instance you want, specify the subnets it will run on as a subnet group and lastly create security group for the RDS instance.
 
-***Note that the process is documented in the **db.tf** file of the terraform config**
+***Note that the process is documented in the **db.tf**, **securitygroup.tf** file of the terraform config**
 
 # Step 4 - Creation of ECS instance
 ## Creation on the ECS cluster with fargate 
