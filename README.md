@@ -15,7 +15,8 @@ After the creation of the new domain name, AWS will provide a hosted zone for th
 The VPC configuration consists of two public subnets that will run an ALB on both of them and a NAT gateway(I used one but two are recomended for HA) and an internet gateway, so the VPC would be able to connect to the WWW.
 
 ALB - Will allow us to access specific microservices that are deployed on the private subnets.
-NAT gateway - THe private subnets will connect to it and be able to sent requests to the WWW to dependencies etc....
+
+NAT gateway - The private subnets will connect to it and be able to sent requests to the WWW to dependencies etc....
 
 This step consists of configuring a few conponents:
 
