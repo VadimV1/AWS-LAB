@@ -2,7 +2,7 @@
 This aim of this project is to provision a complete AWS infrastructure with CI/CD pipeline with a RDS instance and to deploy on that infrastructure  a web application that is micro-serviced and has SSL certifictates using terraform.
 Key Features of the project:
 
-1.Provisioning a complete AWS infrastructure with CD/CD pipeline which runs a micro-serviced full-stack web-app(React and Express.js) that pull queries from an RDS instance that runs postgresql with 'Terrafrom'.
+1.Provisioning a complete AWS infrastructure with CI/CD pipeline which runs a micro-serviced full-stack web-app(React and Express.js) that pull queries from an RDS instance that runs postgresql with 'Terrafrom'.
 
 2.The web-app is exposed to the through a domain that has a secure connection with SSL certificates
 ______________________________
